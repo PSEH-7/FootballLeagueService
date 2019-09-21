@@ -46,16 +46,18 @@ public class StandingService {
 				}
 				else if(countryName == null)
 				{
-					String id = countryNameToIdMap.get(countryName);
-					standingMap.put(id, countryName);
+					String id = countryNameToIdMap.get(cname);
+					standingMap.put(id==null ? cname : id , countryName);
 				}
+				else
+					continue;
 				
 				standingMap.put(map.get("league_id"), map.get("league_name"));
 				
 				if(tname!=null && tname.equals(teamName))
 				{
 					String id = map.get("team_id");
-					standingMap.put(id, teamName);
+					standingMap.put(id==null ? teamName : id , teamName);
 					
 				}
 				else if(teamName == null)
@@ -67,6 +69,7 @@ public class StandingService {
 			}
 			
 		}
+		System.out.print("Total Entries"+responseList.size());
 		return responseListMap;
 	}
 	

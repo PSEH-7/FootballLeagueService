@@ -22,7 +22,7 @@ public class StandingController {
 	
 	@RequestMapping("/league/{id}")
 	@ResponseBody
-	public List<Map<String,String>> getLeagueStandings(@PathVariable("id") String leagueId,@RequestParam String countryName,@RequestParam String teamName)
+	public List<Map<String,String>> getLeagueStandings(@PathVariable("id") String leagueId,@RequestParam(required=false) String countryName,@RequestParam(required=false) String teamName)
 	{
 		return standingService.getStandingInfo(leagueId, countryName, teamName);
 	}
